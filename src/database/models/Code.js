@@ -1,6 +1,6 @@
 const { Model, DataTypes } = require('sequelize')
 
-class Token extends Model {
+class Code extends Model {
   static init(sequelize) {
     super.init({
       customer_id: DataTypes.INTEGER,
@@ -18,4 +18,4 @@ class Token extends Model {
   }
 }
 
-module.exports = Token
+module.exports = Code
