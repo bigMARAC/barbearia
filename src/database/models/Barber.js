@@ -11,6 +11,10 @@ class Barber extends Model {
       tableName: 'barber'
     })
   }
+
+  static associate(models) {
+    this.hasMany(models.Token, { as: 'tokens' })
+  }
 }
 
 module.exports = Barber
