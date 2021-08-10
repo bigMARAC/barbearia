@@ -1,0 +1,263 @@
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2021-08-10T03:19:51.382Z",
+  "__export_source": "insomnia.desktop.app:v2021.4.1",
+  "resources": [
+    {
+      "_id": "req_a92c1d5149574e48b1206d147e68fb15",
+      "parentId": "fld_693bf8aecbd34d43b8a1b6843782a866",
+      "modified": 1628553142382,
+      "created": 1628553045965,
+      "url": "{{ _.baseUrl }}/code/generate/1",
+      "name": "Generate Code",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.adminToken }}"
+      },
+      "metaSortKey": -1628553046012,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "fld_693bf8aecbd34d43b8a1b6843782a866",
+      "parentId": "wrk_462cd069464a429089224d870a4965e0",
+      "modified": 1628552268093,
+      "created": 1628552268093,
+      "name": "Barber",
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1628552268093,
+      "_type": "request_group"
+    },
+    {
+      "_id": "wrk_462cd069464a429089224d870a4965e0",
+      "parentId": null,
+      "modified": 1628536731204,
+      "created": 1628536731204,
+      "name": "Barbearia MKO",
+      "description": "",
+      "scope": "collection",
+      "_type": "workspace"
+    },
+    {
+      "_id": "req_dbbc7397b6164834aaec31040bf23f46",
+      "parentId": "fld_693bf8aecbd34d43b8a1b6843782a866",
+      "modified": 1628552618889,
+      "created": 1628552273709,
+      "url": "{{ _.baseUrl }}/barber/auth",
+      "name": "Auth",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"username\": \"markinho\",\n\t\"password\": \"123\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_13ad3591c5a1493e92d4cedd9e481f8c"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1628552273709,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_59ef9311043b44ab846030b7bb79eedd",
+      "parentId": "fld_2e5f3f30260a43b9927ff0530f9465be",
+      "modified": 1628563751464,
+      "created": 1628563731265,
+      "url": "{{ _.baseUrl }}/code/revoke/2K71BH6",
+      "name": "Revoke Token",
+      "description": "",
+      "method": "PUT",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1628563731265,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "fld_2e5f3f30260a43b9927ff0530f9465be",
+      "parentId": "wrk_462cd069464a429089224d870a4965e0",
+      "modified": 1628539856184,
+      "created": 1628539856184,
+      "name": "Cutomers",
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1628539856184,
+      "_type": "request_group"
+    },
+    {
+      "_id": "req_35217ecef3cd4360812d05d68df961d1",
+      "parentId": "fld_2e5f3f30260a43b9927ff0530f9465be",
+      "modified": 1628551196857,
+      "created": 1628551147820,
+      "url": "{{ _.baseUrl }}/customer/auth",
+      "name": "Auth",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"username\": \"bigmarac\",\n\t\"password\": \"12345678\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_1a947d5c8be441aab5a9479417eb2868"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1628551147820,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_d32ce10539f04c6e89e97bba8dd888ba",
+      "parentId": "fld_2e5f3f30260a43b9927ff0530f9465be",
+      "modified": 1628540230626,
+      "created": 1628539871529,
+      "url": "{{ _.baseUrl }}/customer/store",
+      "name": "Store",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"name\": \"Marcos Emanuel\",\n\t\"username\": \"bigmarac\",\n\t\"password\": \"12345678\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_6a594b74410545b28a00213ed92569c3"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1628539871529,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_a64942ef289e4148b870133aaff1a2df",
+      "parentId": "wrk_462cd069464a429089224d870a4965e0",
+      "modified": 1628536771000,
+      "created": 1628536768301,
+      "url": "{{ _.baseUrl }}",
+      "name": "Welcome",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1628536768301,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "env_9209559e2781d3551e9bc3ca48ed91e2bdc50ed0",
+      "parentId": "wrk_462cd069464a429089224d870a4965e0",
+      "modified": 1628536736406,
+      "created": 1628536731458,
+      "name": "Base Environment",
+      "data": {},
+      "dataPropertyOrder": {},
+      "color": null,
+      "isPrivate": false,
+      "metaSortKey": 1628536731458,
+      "_type": "environment"
+    },
+    {
+      "_id": "jar_9209559e2781d3551e9bc3ca48ed91e2bdc50ed0",
+      "parentId": "wrk_462cd069464a429089224d870a4965e0",
+      "modified": 1628536731462,
+      "created": 1628536731462,
+      "name": "Default Jar",
+      "cookies": [],
+      "_type": "cookie_jar"
+    },
+    {
+      "_id": "spc_b4233c6385364285b556d487e014465e",
+      "parentId": "wrk_462cd069464a429089224d870a4965e0",
+      "modified": 1628536731210,
+      "created": 1628536731210,
+      "fileName": "Barbearia MKO",
+      "contents": "",
+      "contentType": "yaml",
+      "_type": "api_spec"
+    },
+    {
+      "_id": "env_aed72b1fc0874c018edd4c90e2c54d47",
+      "parentId": "env_9209559e2781d3551e9bc3ca48ed91e2bdc50ed0",
+      "modified": 1628553072454,
+      "created": 1628536738092,
+      "name": "Dev",
+      "data": {
+        "baseUrl": "http://localhost:3000",
+        "adminToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidGltZXN0YW1wIjoxNjI4NTUyODQyMTQzLCJhZG1pbiI6dHJ1ZSwiaWF0IjoxNjI4NTUyODQyLCJleHAiOjE2Mjg1OTYwNDJ9.bCNXCdTcpIYmueRoQRU24rfiz0P7IFQ4f2_tWeEERBc"
+      },
+      "dataPropertyOrder": {
+        "&": [
+          "baseUrl",
+          "adminToken"
+        ]
+      },
+      "color": "#00ff08",
+      "isPrivate": false,
+      "metaSortKey": 1628536738092,
+      "_type": "environment"
+    }
+  ]
+}
