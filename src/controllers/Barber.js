@@ -44,7 +44,13 @@ module.exports = {
         expires_in: seconds
       })
 
-      return res.status(200).json({ message: 'Autenticado com sucesso.', user, token })
+      const response = {
+        name: user.name,
+        username: user.username,
+        token,
+      }
+
+      return res.status(200).json({ message: 'Autenticado com sucesso.', user: response })
     } catch (error) {
       console.log(error)
       return res.status(500).json({
