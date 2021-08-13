@@ -1,4 +1,7 @@
 const Customer = require('../database/models/Customer')
+const jwt = require('jsonwebtoken')
+require('dotenv').config()
+const secret = process.env.APP_SECRET
 
 module.exports = {
   async store(req, res) {
@@ -8,7 +11,23 @@ module.exports = {
         return res.status(400).json({ error: true, message: 'Campos Inválidos.' })
       }
 
+      const seconds = 43200
+      
+
       const user = await Customer.create({ name, username, password })
+
+      const token = jwt.sign(
+        {
+          id: user.id,
+          timestamp: Date.now(),
+          admin: false
+        },
+        secret,
+        { expiresIn: seconds }
+      )
+
+      user.token = token
+      await user.save()
       return res.status(200).json({ message: 'Usuário cadastrado com sucesso.', user })
     } catch (err) {
       const type = err.errors[0]
@@ -43,10 +62,25 @@ module.exports = {
         return res.status(401).json({ error: true, message: 'Senha inválida.' })
       }
 
+      const seconds = 43200
+      const token = jwt.sign(
+        {
+          id: user.id,
+          timestamp: Date.now(),
+          admin: false
+        },
+        secret,
+        { expiresIn: seconds }
+      )
+
+      user.token = token
+      await user.save()
+
       const response = {
+        id: user.id,
         name: user.name,
         username: user.username,
-        token: 'osaihjdoiahjdooaishdoiashdoii'
+        token: user.token
       }
 
       return res.status(200).json({ message: 'Autenticado com sucesso.', user: response })
