@@ -45,6 +45,7 @@ module.exports = {
       })
 
       const response = {
+        id: user.id,
         name: user.name,
         username: user.username,
         token,
