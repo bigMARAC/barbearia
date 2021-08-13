@@ -11,16 +11,27 @@ module.exports = {
           message: 'ID de cliente inválido.'
         })
       }
-      const code = randomstring.generate({
-        length: 7,
-        readable: true,
-        charset: 'alphanumeric',
-        capitalization: 'uppercase'
+      const beforeCode = await Code.findOne({
+        where: {
+          customer_id,
+          revoked: false
+        }
       })
-      await Code.create({
-        customer_id,
-        content: code
-      })
+      let code
+      if (beforeCode) {
+        code = beforeCode.content
+      } else {
+        code = randomstring.generate({
+          length: 7,
+          readable: true,
+          charset: 'alphanumeric',
+          capitalization: 'uppercase'
+        })
+        await Code.create({
+          customer_id,
+          content: code
+        })
+      }
       res.status(200).json({ code })
     } catch (err) {
       return res.status(500).json({
