@@ -43,7 +43,26 @@ module.exports = {
         return res.status(401).json({ error: true, message: 'Senha inválida.' })
       }
 
-      return res.status(200).json({ message: 'Autenticado com sucesso.' })
+      const response = {
+        name: user.name,
+        username: user.username,
+        token: 'osaihjdoiahjdooaishdoiashdoii'
+      }
+
+      return res.status(200).json({ message: 'Autenticado com sucesso.', user: response })
+    } catch (error) {
+      return res.status(500).json({
+        error: true,
+        message: 'Ocorreu um erro ao tentar realizar a operação, \npor favor tente novamente mais tarde.'
+      })
+    }
+  },
+  async getAll(req, res) {
+    try {
+      const customers = await Customer.findAll(
+        { attributes: ['id', 'name', 'username'] }
+      )
+      return res.status(200).json({ customers })
     } catch (error) {
       return res.status(500).json({
         error: true,

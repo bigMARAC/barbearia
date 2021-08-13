@@ -11,6 +11,7 @@ routes.post('/barber/auth', Barber.auth)
 routes.get('/code/generate/:customer_id', AdminMiddleware, Code.generate)
 routes.put('/code/revoke/:content', Code.revoke)
 routes.post('/customer/store', Customer.store)
+routes.get('/customer/getall', AdminMiddleware, Customer.getAll)
 routes.post('/customer/auth', Customer.auth)
 
 module.exports = routes
