@@ -5,7 +5,8 @@ class Customer extends Model {
     super.init({
       name: DataTypes.STRING,
       username: DataTypes.STRING,
-      password: DataTypes.STRING
+      password: DataTypes.STRING,
+      token: DataTypes.STRING
     }, {
       sequelize,
       tableName: 'customer'
