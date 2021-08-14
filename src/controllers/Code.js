@@ -64,8 +64,38 @@ module.exports = {
       code.revoked = true
       await code.save()
       
-      return res.status(200)
+      return res.status(200).json({ message: 'Código utilizado com sucesso' })
     } catch (err) {
+      return res.status(500).json({
+        error: true,
+        message: 'Ocorreu um erro ao tentar realizar a operação, \npor favor tente novamente mais tarde.'
+      })
+    }
+  },
+  async getAll(req, res) {
+    try {
+      const { customer_id } = req.params
+      if (!customer_id) {
+        return res.status(400).json({
+          error: true,
+          message: 'Código inválido.'
+        })
+      }
+      const codes = await Code.findAll({
+        where: {
+          revoked: true,
+          customer_id
+        },
+        attributes: [ 'id', 'content' ]
+      })
+      if (!codes) {
+        return res.status(404).json({
+          error: true,
+          message: 'O usuário não possui códigos resgatados'
+        })
+      }
+      return res.status(200).json({ codes })
+    } catch (error) {
       return res.status(500).json({
         error: true,
         message: 'Ocorreu um erro ao tentar realizar a operação, \npor favor tente novamente mais tarde.'
