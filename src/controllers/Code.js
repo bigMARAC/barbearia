@@ -11,15 +11,15 @@ module.exports = {
           message: 'ID de cliente inválido.'
         })
       }
-      const beforeCode = await Code.findOne({
+      const beforeCode = await Code.findAll({
         where: {
           customer_id,
           revoked: false
         }
       })
       let code
-      if (beforeCode) {
-        code = beforeCode.content
+      if (beforeCode.length >= 3) {
+        code = beforeCode[Math.floor(Math.random() * beforeCode.length)].content
       } else {
         code = randomstring.generate({
           length: 7,
