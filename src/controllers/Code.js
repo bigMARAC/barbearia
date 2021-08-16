@@ -53,6 +53,13 @@ module.exports = {
       const code = await Code.findOne({
         where: { content }
       })
+
+      if (!code) {
+        return res.status(404).json({
+          error: true,
+          message: 'Código inválido.'
+        })
+      }
       
       if (code.revoked) {
         return res.status(400).json({
