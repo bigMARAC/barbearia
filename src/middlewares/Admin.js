@@ -30,6 +30,8 @@ module.exports = function (req, res, next) {
         where: { id: decoded.id }
       })
 
+      req.admin_id = user.id
+
       return next()
     })
   } catch (err) {

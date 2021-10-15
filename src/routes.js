@@ -2,6 +2,7 @@ const express = require('express')
 const routes = express.Router()
 
 const Code = require('./controllers/Code')
+const Product = require('./controllers/Product')
 const Customer = require('./controllers/Customer')
 const Barber = require('./controllers/Barber')
 const AdminMiddleware = require('./middlewares/Admin')
@@ -14,5 +15,8 @@ routes.get('/customer/codes/:customer_id', Code.getAll)
 routes.post('/customer/store', Customer.store)
 routes.get('/customer/getall', AdminMiddleware, Customer.getAll)
 routes.post('/customer/auth', Customer.auth)
+
+routes.post('/products/store', AdminMiddleware, Product.store)
+routes.get('/products', Product.getAll)
 
 module.exports = routes
