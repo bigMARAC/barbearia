@@ -1,4 +1,5 @@
 const { Model, DataTypes } = require('sequelize')
+const { v4: uuidv4 } = require('uuid')
 
 class Product extends Model {
   static init(sequelize) {
@@ -9,7 +10,10 @@ class Product extends Model {
       price: DataTypes.INTEGER
     }, {
       sequelize,
-      tableName: 'products'
+      tableName: 'products',
+      hooks: {
+        beforeCreate: (product => product.id = uuidv4())
+      }
     })
   }
 
